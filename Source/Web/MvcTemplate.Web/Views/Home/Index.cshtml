@@ -1,0 +1,15 @@
+﻿@model IndexViewModel
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (this.Model.User != null)
+{
+    <h1 class="text-center">Welcome, @this.Model.User.Email</h1>
+}
+else
+{
+    <h1 class="text-center">Welcome, unknown!</h1>
+}
+
