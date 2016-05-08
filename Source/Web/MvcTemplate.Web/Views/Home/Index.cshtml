@@ -13,3 +13,14 @@ else
     <h1 class="text-center">Welcome, unknown!</h1>
 }
 
+<button id="btn">Click me</button>
+
+@section scripts {
+    <script>
+        $('#btn').click(function () {
+            $.getJSON('/Home/GetJson').then(function (data) {
+                console.log(data);
+            })
+        })
+    </script>
+}

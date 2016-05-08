@@ -28,5 +28,10 @@
 
             return this.View(model);
         }
+
+        public JsonResult GetJson()
+        {
+            return this.Json(new { Name = "Nameeee", Age = "1241241" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
