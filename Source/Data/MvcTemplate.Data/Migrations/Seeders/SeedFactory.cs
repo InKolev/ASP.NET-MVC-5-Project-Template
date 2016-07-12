@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-
     using MvcTemplate.Common;
 
     public class SeedFactory

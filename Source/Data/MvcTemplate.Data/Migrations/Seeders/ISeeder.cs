@@ -2,7 +2,7 @@
 {
     public interface ISeeder
     {
-        int Priority { get; set; }
+        int Priority { get; }
 
         void Seed(ApplicationDbContext context);
     }

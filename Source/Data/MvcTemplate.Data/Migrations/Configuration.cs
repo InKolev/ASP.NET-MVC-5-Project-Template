@@ -1,13 +1,7 @@
 ﻿namespace MvcTemplate.Data.Migrations
 {
     using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-
-    using MvcTemplate.Common;
-    using MvcTemplate.Data.Models;
+    using Seeders;
 
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -17,9 +11,14 @@
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
+        private SeedFactory SeedFactory => new SeedFactory();
+
         protected override void Seed(ApplicationDbContext context)
         {
-            // Seed data here
+            foreach (var seeder in this.SeedFactory.Seeders)
+            {
+                seeder.Seed(context);
+            }
         }
     }
 }

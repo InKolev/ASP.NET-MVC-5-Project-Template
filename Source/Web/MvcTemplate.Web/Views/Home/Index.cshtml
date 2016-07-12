@@ -1,19 +1,21 @@
-﻿@model IndexViewModel
+﻿@model UserViewModel
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (this.Model.User != null)
+@if (this.Model != null)
 {
-    <h1 class="text-center">Welcome, @this.Model.User.Email</h1>
+    <h1 class="text-center">Welcome, @this.Model.UserName</h1>
 }
 else
 {
     <h1 class="text-center">Welcome, unknown!</h1>
 }
 
-<button id="btn">Click me</button>
+<div class="text-center">
+    <button id="btn" class="btn btn-success">Click to test jQuery ajax calls</button>
+</div>
 
 @section scripts {
     <script>

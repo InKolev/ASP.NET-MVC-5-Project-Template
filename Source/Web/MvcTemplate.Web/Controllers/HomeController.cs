@@ -19,12 +19,11 @@
 
         public ActionResult Index()
         {
+            var mapper = this.Mapper.ConfigurationProvider;
+
             var userId = this.User.Identity.IsAuthenticated ? this.User.Identity.GetUserId() : null;
             var user = this.Users.All().FirstOrDefault(x => x.Id == userId);
-            var model = new IndexViewModel()
-            {
-                User = user
-            };
+            var model = this.Mapper.Map<UserViewModel>(user);
 
             return this.View(model);
         }

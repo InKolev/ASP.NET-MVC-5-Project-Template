@@ -5,7 +5,7 @@
 
     public class IdentifierProvider : IIdentifierProvider
     {
-        private const string Salt = ".12312313123";
+        private const string Salt = ".12713268914";
 
         public int DecodeId(string urlId)
         {

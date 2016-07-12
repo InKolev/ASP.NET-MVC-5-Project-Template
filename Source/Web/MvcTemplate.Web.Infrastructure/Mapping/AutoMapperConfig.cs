@@ -23,7 +23,7 @@
                 });
         }
 
-        private static void LoadStandardMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
+        private static void LoadStandardMappings(IEnumerable<Type> types, IMapperConfigurationExpression mapperConfiguration)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -42,7 +42,7 @@
             }
         }
 
-        private static void LoadReverseMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
+        private static void LoadReverseMappings(IEnumerable<Type> types, IMapperConfigurationExpression mapperConfiguration)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -61,7 +61,7 @@
             }
         }
 
-        private static void LoadCustomMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
+        private static void LoadCustomMappings(IEnumerable<Type> types, IMapperConfigurationExpression mapperConfiguration)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
