@@ -21,6 +21,7 @@ else
     <script>
         $('#btn').click(function () {
             $.getJSON('/Home/GetJson').then(function (data) {
+                alert(data.Message);
                 console.log(data);
             })
         })
