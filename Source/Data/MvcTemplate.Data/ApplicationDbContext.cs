@@ -12,6 +12,9 @@
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            //For quicker test data insertions
+            //this.Configuration.AutoDetectChangesEnabled = false;
+            //this.Configuration.ValidateOnSaveEnabled = false;
         }
 
         //public IDbSet<Joke> Jokes { get; set; }
