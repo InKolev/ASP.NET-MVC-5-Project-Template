@@ -17,7 +17,6 @@
             this.users = users;
         }
 
-
         public ActionResult Index()
         {
             var mapper = this.Mapper.ConfigurationProvider;
