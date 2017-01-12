@@ -3,7 +3,9 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
+
     using Common.Models;
+
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
 
@@ -12,12 +14,13 @@
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            // For quicker test data insertions
+            // For faster test data insertions disabled the following properties
             // this.Configuration.AutoDetectChangesEnabled = false;
             // this.Configuration.ValidateOnSaveEnabled = false;
         }
 
-        // public IDbSet<Student> Students { get; set; }
+        public IDbSet<Workplace> Workplaces { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -29,9 +32,11 @@
             return base.SaveChanges();
         }
 
+        /// <summary>
+        /// Approach via @julielerman: http://bit.ly/123661P
+        /// </summary>
         private void ApplyAuditInfoRules()
         {
-            // Approach via @julielerman: http://bit.ly/123661P
             var changeTrackerEntries =
                 this.ChangeTracker.Entries()
                     .Where(
@@ -45,7 +50,7 @@
 
                 if (entry.State == EntityState.Added && entity.CreatedOn == default(DateTime))
                 {
-                    entity.CreatedOn = DateTime.Now;
+                    entity.CreatedOn = DateTime.Now; // TODO: Introduce DateTimeProvider and replace all DateTime.Now calls
                 }
                 else
                 {

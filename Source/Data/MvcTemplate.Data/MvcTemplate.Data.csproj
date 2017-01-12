@@ -63,6 +63,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seeders\ISeeder.cs" />
     <Compile Include="Migrations\Seeders\SeedFactory.cs" />
+    <Compile Include="Migrations\Seeders\WorkplacesSeeder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

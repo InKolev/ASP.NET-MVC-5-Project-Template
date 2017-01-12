@@ -73,7 +73,7 @@
             }
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             this.Context.SaveChanges();
         }

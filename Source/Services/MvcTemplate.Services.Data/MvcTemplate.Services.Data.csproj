@@ -53,8 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IUsersService.cs" />
+    <Compile Include="IWorkplaceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersService.cs" />
+    <Compile Include="WorkplaceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\MvcTemplate.Data.Common\MvcTemplate.Data.Common.csproj">
