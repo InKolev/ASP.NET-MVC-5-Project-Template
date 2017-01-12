@@ -12,13 +12,12 @@
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            //For quicker test data insertions
-            //this.Configuration.AutoDetectChangesEnabled = false;
-            //this.Configuration.ValidateOnSaveEnabled = false;
+            // For quicker test data insertions
+            // this.Configuration.AutoDetectChangesEnabled = false;
+            // this.Configuration.ValidateOnSaveEnabled = false;
         }
 
-        //public IDbSet<Joke> Jokes { get; set; }
-
+        // public IDbSet<Student> Students { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -33,11 +32,17 @@
         private void ApplyAuditInfoRules()
         {
             // Approach via @julielerman: http://bit.ly/123661P
-            foreach (var entry in
+            var changeTrackerEntries =
                 this.ChangeTracker.Entries()
-                    .Where(e => e.Entity is IAuditInfo && ((e.State == EntityState.Added) || (e.State == EntityState.Modified))))
+                    .Where(
+                        e =>
+                            e.Entity is IAuditInfo &&
+                            ((e.State == EntityState.Added) || (e.State == EntityState.Modified)));
+
+            foreach (var entry in changeTrackerEntries)
             {
                 var entity = (IAuditInfo)entry.Entity;
+
                 if (entry.State == EntityState.Added && entity.CreatedOn == default(DateTime))
                 {
                     entity.CreatedOn = DateTime.Now;
