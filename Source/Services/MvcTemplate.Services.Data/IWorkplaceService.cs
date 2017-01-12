@@ -11,7 +11,10 @@
 
     public interface IWorkplaceService
     {
-        IEnumerable<Workplace> GetMany<T>();
-        IEnumerable<Workplace> GetMany<T>(Expression<);
+        IEnumerable<Workplace> GetMany();
+
+        IEnumerable<Workplace> GetMany(Expression<Func<Workplace, bool>> whereFilter);
+
+        IEnumerable<TOut> GetMany<TOut>(Expression<Func<Workplace, bool>> whereFilter);
     }
 }
