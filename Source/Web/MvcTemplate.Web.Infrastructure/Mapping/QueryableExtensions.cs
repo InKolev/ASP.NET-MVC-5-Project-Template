@@ -8,7 +8,7 @@
 
     public static class QueryableExtensions
     {
-        public static IQueryable<TDestination> To<TDestination>(this IQueryable source, params Expression<Func<TDestination, object>>[] membersToExpand)
+        public static IQueryable<TDestination> ProjectTo<TDestination>(this IQueryable source, params Expression<Func<TDestination, object>>[] membersToExpand)
         {
             return source.ProjectTo(AutoMapperConfig.Configuration, membersToExpand);
         }
