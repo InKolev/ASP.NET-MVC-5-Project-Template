@@ -24,9 +24,8 @@
         {
             var mapper = this.Mapper.ConfigurationProvider;
 
-            // My test
             var items = this.workplaces.GetMany();
-            var itemsOptimized = this.workplaces.GetMany<WorkplaceViewModel>(x => x.Id < 20);
+            var itemsOptimized = this.workplaces.GetMany<WorkplaceViewModel>();
 
             var userId = this.User.Identity.IsAuthenticated ? this.User.Identity.GetUserId() : null;
             var user = this.users.All().FirstOrDefault(x => x.Id == userId);

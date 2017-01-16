@@ -15,6 +15,8 @@
 
         IEnumerable<Workplace> GetMany(Expression<Func<Workplace, bool>> whereFilter);
 
+        IEnumerable<TOut> GetMany<TOut>();
+
         IEnumerable<TOut> GetMany<TOut>(Expression<Func<Workplace, bool>> whereFilter);
     }
 }
