@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "FirstPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    @Styles.Render("~/Content/css/intro.js-2.4.0/minified/introjs.min.css")
+}
+
+<h2>First Page <a class="btn btn-danger btn-lg" id="tutorial">Start tutorial</a></h2>
+
+<div class="row jumbotron" id="firstStepsSet">
+    <div class="col-lg-4" data-step="1" data-intro="This is step 1" data-position="bottom">
+        <h2>My hierarchy</h2>
+    </div>
+    <div class="col-lg-4" data-step="2" data-intro="This is step 2" data-position="bottom">
+        <h2>Create workplace</h2>
+    </div>
+    <div class="col-lg-4" data-step="3" data-intro="This is step 3" data-position="right">
+        <h2>Risk assessment</h2>
+    </div>
+</div>
+
+<form id="hintsSet" class="form-horizontal">
+    <fieldset>
+        <legend>Workplace details</legend>
+        <div class="form-group">
+            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email" data-hint="This is a tooltip!" data-hintPosition="top-left" data-position="bottom">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" data-hint="This is a tooltip!" data-hintPosition="top-left" data-position="bottom">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="textArea" data-hint="This is a tooltip!" data-hintPosition="top-left" data-position="bottom"></textarea>
+                <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<div class="row jumbotron" id="secondStepsSet">
+    <div class="col-lg-4" data-step="4" data-intro="This is step 4" data-position="bottom">
+        <h2>Information sheet</h2>
+    </div>
+    <div class="col-lg-4" data-step="5" data-intro="This is step 5">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="col-lg-4" data-step="6" data-intro="This is step 6">
+        <h2>My profile</h2>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Content/css/intro.js-2.4.0/minified/intro.min.js"></script>
+    <script>
+        var introOptions = {
+            'exitOnOverlayClick': false,
+            'showProgress': true,
+            'showBullets': true,
+            'keyboardNavigation': true,
+            'showStepNumbers': true,
+            'scrollToElement': true,
+            'doneLabel': 'Close!',
+            'skipLabel': 'Skip tutorial'
+        }
+
+        function startHintsIntroJsTutorial() {
+            var introHintsSet = introJs().addHints();
+            var totalHints = introHintsSet._introItems.length;
+            var hintsClosed = 0;
+
+            introHintsSet.onhintclose((hintId) => {
+                hintsClosed += 1;
+                if (hintsClosed >= totalHints) {
+                    startSecondIntroJsTutorial();
+                }
+            })
+        }
+
+        function startFirstIntroJsTutorial() {
+            introJs('#firstStepsSet')
+                .setOptions(introOptions)
+                .oncomplete(() => startHintsIntroJsTutorial())
+                .start();
+        }
+
+        function startSecondIntroJsTutorial() {
+            introJs('#secondStepsSet')
+                .setOptions(introOptions)
+                .oncomplete(() => {
+                    var nextPageUrl = '@Url.Action("SecondPage", "Home", new { tutorial = true })';
+                    window.location.href = nextPageUrl;
+                }).start();
+        }
+
+        $('#tutorial').on('click', function () {
+            startFirstIntroJsTutorial();
+        })
+    </script>
+}
