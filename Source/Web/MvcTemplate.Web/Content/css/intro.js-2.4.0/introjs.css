@@ -402,18 +402,18 @@ tr.introjs-showElement > th {
 }
 
 .introjs-hint:hover > .introjs-hint-pulse {
-  border: 5px solid rgba(60, 60, 60, 0.57);
+  border: 4px solid rgba(46, 254, 64, 1);
 }
 
 .introjs-hint-pulse {
   box-sizing: content-box;
-  width: 10px;
-  height: 10px;
-  border: 5px solid rgba(60, 60, 60, 0.27);
+  width: 14px;
+  height: 14px;
+  border: 4px solid rgba(46, 210, 64, 0.6);
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  background-color: rgba(136, 136, 136, 0.24);
+  background-color: rgba(1, 224, 1, 0.3);
   z-index: 10;
   position: absolute;
   -webkit-transition: all 0.2s ease-out;
@@ -429,7 +429,7 @@ tr.introjs-showElement > th {
 }
 .introjs-hint-dot {
   box-sizing: content-box;
-  border: 10px solid rgba(146, 146, 146, 0.36);
+  border: 11px solid rgba(1, 255, 112, 1);
   background: transparent;
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;

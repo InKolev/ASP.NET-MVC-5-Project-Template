@@ -4,10 +4,10 @@
 }
 
 @section styles {
-    @Styles.Render("~/Content/css/intro.js-2.4.0/minified/introjs.min.css")
+    @Styles.Render("~/Content/css/intro.js-2.4.0/introjs.css")
 }
 
-<h2>First Page <a class="btn btn-danger btn-lg" id="tutorial">Start tutorial</a></h2>
+<h2>First Page <a class="btn btn-success btn-lg" id="tutorial">Start tutorial</a></h2>
 
 <div class="row jumbotron" id="firstStepsSet">
     <div class="col-lg-4" data-step="1" data-intro="This is step 1" data-position="bottom">
@@ -27,19 +27,19 @@
         <div class="form-group">
             <label for="inputEmail" class="col-lg-2 control-label">Email</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="Email" data-hint="This is a tooltip!" data-hintPosition="top-left" data-position="bottom">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email" data-hint="This is a tooltip!" data-hintPosition="top-right" data-position="right">
             </div>
         </div>
         <div class="form-group">
             <label for="inputPassword" class="col-lg-2 control-label">Password</label>
             <div class="col-lg-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password" data-hint="This is a tooltip!" data-hintPosition="top-left" data-position="bottom">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" data-hint="This is a tooltip!" data-hintPosition="top-right" data-position="right">
             </div>
         </div>
         <div class="form-group">
             <label for="textArea" class="col-lg-2 control-label">Textarea</label>
             <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="textArea" data-hint="This is a tooltip!" data-hintPosition="top-left" data-position="bottom"></textarea>
+                <textarea class="form-control" rows="3" id="textArea" data-hint="This is a tooltip!" data-hintPosition="top-right" data-position="right"></textarea>
                 <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
             </div>
         </div>
@@ -50,29 +50,29 @@
     <div class="col-lg-4" data-step="4" data-intro="This is step 4" data-position="bottom">
         <h2>Information sheet</h2>
     </div>
-    <div class="col-lg-4" data-step="5" data-intro="This is step 5">
+    <div class="col-lg-4" data-step="5" data-intro="This is step 5" data-position="bottom">
         <h2>Dashboard</h2>
     </div>
-    <div class="col-lg-4" data-step="6" data-intro="This is step 6">
+    <div class="col-lg-4" data-step="6" data-intro="This is step 6" data-position="bottom">
         <h2>My profile</h2>
     </div>
 </div>
 
 @section scripts {
-    <script src="~/Content/css/intro.js-2.4.0/minified/intro.min.js"></script>
+    <script src="~/Content/css/intro.js-2.4.0/intro.js"></script>
     <script>
         var introOptions = {
             'exitOnOverlayClick': false,
             'showProgress': true,
-            'showBullets': true,
+            'showBullets': false,
             'keyboardNavigation': true,
             'showStepNumbers': true,
             'scrollToElement': true,
-            'doneLabel': 'Close!',
+            'doneLabel': 'Next page =>',
             'skipLabel': 'Skip tutorial'
-        }
+        };
 
-        function startHintsIntroJsTutorial() {
+        function startHints() {
             var introHintsSet = introJs().addHints();
             var totalHints = introHintsSet._introItems.length;
             var hintsClosed = 0;
@@ -80,19 +80,19 @@
             introHintsSet.onhintclose((hintId) => {
                 hintsClosed += 1;
                 if (hintsClosed >= totalHints) {
-                    startSecondIntroJsTutorial();
+                    startSecondIntro();
                 }
             })
         }
 
-        function startFirstIntroJsTutorial() {
+        function startFirstIntro() {
             introJs('#firstStepsSet')
                 .setOptions(introOptions)
-                .oncomplete(() => startHintsIntroJsTutorial())
+                .oncomplete(() => startHints())
                 .start();
         }
 
-        function startSecondIntroJsTutorial() {
+        function startSecondIntro() {
             introJs('#secondStepsSet')
                 .setOptions(introOptions)
                 .oncomplete(() => {
@@ -102,7 +102,7 @@
         }
 
         $('#tutorial').on('click', function () {
-            startFirstIntroJsTutorial();
+            startFirstIntro();
         })
     </script>
 }
