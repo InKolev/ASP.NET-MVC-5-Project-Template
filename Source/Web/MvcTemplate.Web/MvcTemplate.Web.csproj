@@ -584,10 +584,6 @@
       <Project>{7c950cdc-9587-4b65-a204-988efed17948}</Project>
       <Name>MvcTemplate.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MvcTemplate.Common\MvcTemplate.Common.csproj">
-      <Project>{701F322F-AA01-4DDC-90B6-6935981C1E73}</Project>
-      <Name>MvcTemplate.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Services\MvcTemplate.Services.Data\MvcTemplate.Services.Data.csproj">
       <Project>{90fe4c4d-122a-406d-8a40-79c561fb8184}</Project>
       <Name>MvcTemplate.Services.Data</Name>
